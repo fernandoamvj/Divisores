@@ -14,15 +14,29 @@ namespace Divisores
             {
                 var divisoresService = scope.ServiceProvider.GetRequiredService<DivisoresService>();
 
-                int numero = 5;
+                Console.WriteLine("Digite um número inteiro maior que 2:");
 
-                var divisoresPrimos = divisoresService.ListarDivisoresPrimos(numero);
+                string entradaUsuario = Console.ReadLine();
 
-                Console.WriteLine(string.Join(", ", divisoresPrimos));
+                int numero;
+                bool numeroValido = int.TryParse(entradaUsuario, out numero);
 
-                var divisores = divisoresService.ListarDivisores(numero);
+                if(numeroValido && numero >= 2)
+                {
+                    var divisoresPrimos = divisoresService.ListarDivisoresPrimos(numero);
 
-                Console.WriteLine(string.Join(", ", divisores));
+                    Console.WriteLine("Divisores Primos:");
+                    Console.WriteLine(string.Join(", ", divisoresPrimos));
+
+                    var divisores = divisoresService.ListarDivisores(numero);
+
+                    Console.WriteLine("Divisores:");
+                    Console.WriteLine(string.Join(", ", divisores));
+                }
+                else
+                {
+                    Console.WriteLine("Número inválido ou menor que 2");
+                }
             }
         }
     }
