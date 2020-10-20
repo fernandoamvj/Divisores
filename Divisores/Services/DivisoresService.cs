@@ -18,6 +18,7 @@ namespace Services
                 if (numero % divisor == 0)
                 {
                     divisores.Add(divisor);
+
                     if (divisor != numero / divisor)
                     {
                         divisores.Add(numero / divisor);

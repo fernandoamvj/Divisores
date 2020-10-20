@@ -1,5 +1,5 @@
-﻿using System;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 using Services;
 
 namespace Divisores
@@ -14,14 +14,14 @@ namespace Divisores
             {
                 var divisoresService = scope.ServiceProvider.GetRequiredService<DivisoresService>();
 
-                Console.WriteLine("Digite um número inteiro maior que 2:");
+                Console.WriteLine("Digite um número inteiro(natural):");
 
                 string entradaUsuario = Console.ReadLine();
 
                 int numero;
                 bool numeroValido = int.TryParse(entradaUsuario, out numero);
 
-                if(numeroValido && numero >= 2)
+                if (numeroValido && numero >= 0)
                 {
                     var divisoresPrimos = divisoresService.ListarDivisoresPrimos(numero);
 
@@ -35,7 +35,7 @@ namespace Divisores
                 }
                 else
                 {
-                    Console.WriteLine("Número inválido ou menor que 2");
+                    Console.WriteLine("Número inválido ou menor que 0");
                 }
             }
         }
